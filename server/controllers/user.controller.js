@@ -51,7 +51,7 @@ const userByID = (req, res, next, id) => {
 const read = (req, res) => {
     
 }
-const update = (req, res, next) => {...}
-const remove = (req, res, next) => {...}
+// const update = (req, res, next) => {...}
+// const remove = (req, res, next) => {...}
 
 export default {create, list, userByID, read, update, remove}
