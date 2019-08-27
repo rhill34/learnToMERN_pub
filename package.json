@@ -1,0 +1,33 @@
+{
+  "name": "seemee_skeleton",
+  "version": "1.0.0",
+  "description": "Building a Backend with MongoDB, Express, and Node",
+  "main": "template.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "development": "nodemon"
+  },
+  "author": "Robert Hill",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-core": "6.26.2",
+    "babel-loader": "7.1.4",
+    "babel-preset-env": "1.6.1",
+    "babel-preset-react": "6.24.1",
+    "babel-preset-stage-2": "6.24.1",
+    "file-loader": "1.1.11",
+    "nodemon": "1.17.3",
+    "webpack": "4.6.0",
+    "webpack-cli": "^3.3.7",
+    "webpack-node-externals": "^1.7.2"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "compression": "^1.7.4",
+    "cookie-parser": "^1.4.4",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "helmet": "^3.20.0",
+    "mongoose": "^5.6.10"
+  }
+}
