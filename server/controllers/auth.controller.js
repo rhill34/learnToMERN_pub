@@ -21,7 +21,7 @@ import { RSA_NO_PADDING } from 'constants';
  * @param {email password} req 
  * @param {token} res 
  */
-const signin = (req,res)=>{
+const signin = (req,res) => {
      User.findOne({
          "email":req.body.email
      }, (err, user) => {
@@ -78,3 +78,5 @@ const hasAuthorization = (req,res) => {
      }
      next()
 }
+
+export default {signin, signout, requireSignin, hasAuthorization}
