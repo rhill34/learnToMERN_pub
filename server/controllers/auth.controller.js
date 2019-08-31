@@ -61,7 +61,15 @@ const signout = (req,res) => {
         message: "Seeker signed out"
     })
 }
-const requireSignin = ''//TODO
+/**
+ * Require Signin 
+ * used to verify authorized express-jwt request have valid JWT
+ */
+const requireSignin = expressjwt({
+    secret: config.jwtSecret,
+    userProperty: 'auth'
+})
+
 const hasAuthorization = (req,res) => {
      //TODO
 }
