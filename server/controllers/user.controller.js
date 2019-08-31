@@ -47,11 +47,47 @@ const userByID = (req, res, next, id) => {
         next()//middleware to propagate the next relevant function. read is the next relevant function in the controller. Thus, if userByID controller is uses next(), then the next controller is read. 
     })
 }
-
+/*
+Reading 
+*/
 const read = (req, res) => {
-    
+    req.profile.hashed_password = undefined
+    req.profile.salt = undefined
+    return res.json(req.profile)
 }
-// const update = (req, res, next) => {...}
-// const remove = (req, res, next) => {...}
+/*
+Updating 
+*/
+const update = (req, res, next) => {
+    let user =req.profile
+    user =_.extend(user, req.body)
+    user.updated = Date.now()
+    user.save((err) => {
+        if(err) {
+            return res.status(400).json({
+                error: errorHandler.getErrorMessage(err)
+            })
+        }
+        user.hashed_password = undefined
+        user.salt = undefined
+        res.join(user)
+    })
+}
+/*
+Deleting 
+*/
+const remove = (req, res, next) => {
+    let user = req.profile
+    user.remove((err, deletedUser) => {
+        if(err) {
+            return res.status(400).json({
+                error: errorHandler.getErrorMessage(err)
+            })
+        }
+        deletedUser.hashed_password = undefined
+        deletedUser.salt = undefined
+        res.join(deletedUser)
+    })
+}
 
 export default {create, list, userByID, read, update, remove}
