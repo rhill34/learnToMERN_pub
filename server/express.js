@@ -32,4 +32,15 @@ app.get('/', (req,res) => {
     res.status(200).send(Template())
 })
 
+/**
+Handles Errors 
+of unauthorized requests to Express router  
+*/
+app.use((err, req, res, next) => {
+    if (err.name === 'UnauthorizedError') {
+        res.status(401).json({
+            "error" : err.name + ":" + err.message
+        })
+    }
+})
 export default app
