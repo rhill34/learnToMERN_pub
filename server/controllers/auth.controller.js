@@ -49,8 +49,17 @@ const signin = (req,res)=>{
         })
     })
 }
+/**
+ * Signout 
+ * route declared in signout API endpoint './../routes/authroutes'
+ * @param {Sign} req 
+ * @param {*} res 
+ */
 const signout = (req,res) => {
-    //TODO
+    res.clearCookie("t")
+    return res.status('200').json({
+        message: "Seeker signed out"
+    })
 }
 const requireSignin = ''//TODO
 const hasAuthorization = (req,res) => {
