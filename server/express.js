@@ -12,6 +12,9 @@ import userRoutes from './routes/user.routes'
 import authRoutes from './routes/auth.routes'
 
 const app = express()
+
+// devBundle.compile(app)
+
 /**...configure express here */
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true}))

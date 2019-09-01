@@ -13,7 +13,6 @@ import User from '../models/user.model'
 import jwt from 'jsonwebtoken'
 import expressjwt from 'express-jwt'
 import config from './../../config/config'
-import { RSA_NO_PADDING } from 'constants';
 
 /**
  * Sign-In

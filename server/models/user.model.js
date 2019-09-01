@@ -14,17 +14,17 @@ const UserSchema = new mongoose.Schema({
         match: [/.+\@.+\..+/, 'Please filla valid email address'],
         required: 'Email is required'
     },
-    created: {
-        type: Date,
-        default: Date.now
-    },
-    updated:Date,
     /* Hashed password and Salt */
     hashed_password: {
         type: String,
         required: "Password is required for the Seeker"
     },
-    salt: String
+    salt: String,
+    updated:Date,
+    created: {
+        type: Date,
+        default: Date.now
+    }
 })
 /**Password for auth */
     /**As a virtual field */
@@ -38,6 +38,16 @@ const UserSchema = new mongoose.Schema({
         .get(function() {
             return this._password
         })
+/**Password field validation */
+UserSchema.path('hashed_password').validate(function(v) {
+    if(this._password && this._password.length < 6) {
+        this.invalidate('password', 'Password must be at least 6 characters.')
+    }
+    if (this.isNew && !this._password) {
+        this.invalidate('password', 'Password is required')
+    }
+}, null)
+
 /**Encryption and authentication */        
     UserSchema.methods = {
         authenticate: function(plainText) {
@@ -48,7 +58,8 @@ const UserSchema = new mongoose.Schema({
             try {
                 return crypto
                 .createHmac('sha1', this.salt)
-                .update(password).digest('hex')
+                .update(password)
+                .digest('hex')
             } catch (err) {
                 return ''
             }
@@ -57,15 +68,6 @@ const UserSchema = new mongoose.Schema({
             return Math.round((new Date().valueOf() * Math.random())) + ''
         }
     }
-/**Password field validation */
-    UserSchema.path('hashed_password').validate(function(v) {
-        if(this._password && this._password.length < 6) {
-            this.invalidate('password', 'Password must be at least 6 characters.')
-        }
-        if (this.isNew && !this._password) {
-            this.invalidate('password', 'Password is required')
-        }
-    }, null)
 
 /**UserSchema Defind and Exported */
 export default mongoose.model('User', UserSchema)

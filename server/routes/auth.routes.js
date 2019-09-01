@@ -1,10 +1,13 @@
 /**
  * Authorize and Protected Routes 
  */
-import express from 'express'
+import { Router as expressRouter } from 'express';
+
+const router = expressRouter();
+//  import express from 'express'
 import authCtrl from '../controllers/auth.controller'
 
-const router = express.Router
+// const router = express.Router
 /**
  * POST to request authenticate the user email and password
  */
