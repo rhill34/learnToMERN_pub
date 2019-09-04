@@ -1,5 +1,5 @@
 import mongoose from 'mongoose'
-
+import crypto from 'crypto'
 /* User Schema Definition */
 const UserSchema = new mongoose.Schema({
     name: {
@@ -30,13 +30,12 @@ const UserSchema = new mongoose.Schema({
     /**As a virtual field */
     UserSchema
         .virtual('password')
-        .set(function(password) {
+        .get(function() {
+            return this._password
+        }).set(function(password) {
             this._password = password
             this.salt = this.makeSalt()
             this.hashed_password = this.encryptPassword(password)
-        })
-        .get(function() {
-            return this._password
         })
 /**Password field validation */
 UserSchema.path('hashed_password').validate(function(v) {

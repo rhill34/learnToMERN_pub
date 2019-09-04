@@ -78,7 +78,7 @@ Deleting
 */
 const remove = (req, res, next) => {
     let user = req.profile
-    user.remove((err, deletedUser) => {
+    user.deletOne((err, deletedUser) => {
         if(err) {
             return res.status(400).json({
                 error: errorHandler.getErrorMessage(err)
