@@ -5,15 +5,23 @@ import compress from 'compression'
 import cors from 'cors'
 import helmet from 'helmet'
 import Template from './../template'
+/**Import the devBundle for development */
+import devBundle from './devBundle'
+/**Serving Static files with Express */
+import path from 'path'
 
 /**user API routes */
 import userRoutes from './routes/user.routes'
 /**authorized user Routes */
 import authRoutes from './routes/auth.routes'
 
+/**Gets the current working directory */
+const CURRENT_WORKING_DIR = process.cwd()
+
 const app = express()
 
-// devBundle.compile(app)
+/**dev compile to express */
+devBundle.compile(app)
 
 /**...configure express here */
 app.use(bodyParser.json())
@@ -35,6 +43,7 @@ app.get('/', (req,res) => {
     res.status(200).send(Template())
 })
 
+app.use('/dist', express.static(path.join(CURRENT_WORKING_DIR,'dist')))
 /**
 Handles Errors 
 of unauthorized requests to Express router  
