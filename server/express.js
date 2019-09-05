@@ -42,8 +42,9 @@ app.use('/', authRoutes)
 app.get('/', (req,res) => {
     res.status(200).send(Template())
 })
-
+/**Serving static files with Express */
 app.use('/dist', express.static(path.join(CURRENT_WORKING_DIR,'dist')))
+
 /**
 Handles Errors 
 of unauthorized requests to Express router  

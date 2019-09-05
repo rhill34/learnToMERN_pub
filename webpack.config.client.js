@@ -10,8 +10,8 @@ const config = {
     mode: "development",
     devtool: 'eval-source-map',
     entry: [
-        'react-hot-loader/patch',
-        'webpack-hot-middleware/client ?reload=true',
+        // 'react-hot-loader/patch',
+        // 'webpack-hot-middleware/client ?reload=true',
         path.join(CURRENT_WORKING_DIR, 'client/main.js')
     ],
     output: {
@@ -19,7 +19,7 @@ const config = {
         filename: 'bundle.js',
         publicPath: '/dist/'
     },
-    moodule: {
+    module: {
         rules: [
             {
                 test: /\.jsx?$/,
@@ -27,6 +27,10 @@ const config = {
                 use: [
                     'babel-loader'
                 ]
+            },
+            {
+                test: /\.(ttf|eot|svg|gif|jpg|png)(\?[\s\S]+)?$/,
+                use: 'file-loader'
             }
         ]
     }, plugins: [
