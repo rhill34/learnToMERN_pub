@@ -36,8 +36,11 @@ class Home extends Component {
                         <Typography type="body1" component="p">
                             Welcome to the SeeMee Skeleton Home Page
                         </Typography>
+                        {/* Code to Debug */}
+                        {/* <Typography type="body" component="p">
+                        <Link to="/users" title="Users">Users</Link>link
+                        </Typography> */}
                     </CardContent>
-                    <Link to="/users">Test Link To Users</Link>
                 </Card>
             </div>
         )
