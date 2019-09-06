@@ -4,7 +4,7 @@ import {withStyles} from 'material-ui/styles'
 import Card, {CardContent, CardMedia} from 'material-ui/Card'
 import Typography from 'material-ui/Typography'
 import seashellImg from '../assets/img/seemee.jpg'
-import { Link } from 'material-ui-icons'
+import { Link } from 'react-router-dom'
 
 const styles = theme=> ({
     card: {
@@ -34,12 +34,8 @@ class Home extends Component {
                     title="Seemee Sample Image"/>
                     <CardContent>
                         <Typography type="body1" component="p">
-                            Welcome to the SeeMee Skeleton Home Page
+                        Welcome to the SeeMee Skeleton Home Page <Link to="/users">Users</Link>
                         </Typography>
-                        {/* Code to Debug */}
-                        {/* <Typography type="body" component="p">
-                        <Link to="/users" title="Users">Users</Link>link
-                        </Typography> */}
                     </CardContent>
                 </Card>
             </div>
