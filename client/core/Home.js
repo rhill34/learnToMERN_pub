@@ -4,6 +4,7 @@ import {withStyles} from 'material-ui/styles'
 import Card, {CardContent, CardMedia} from 'material-ui/Card'
 import Typography from 'material-ui/Typography'
 import seashellImg from '../assets/img/seemee.jpg'
+import { Link } from 'material-ui-icons'
 
 const styles = theme=> ({
     card: {
@@ -27,7 +28,7 @@ class Home extends Component {
             <div>
                 <Card className={classes.card}>
                     <Typography type="headline" component="h2" className={classes.title}>
-                        Home Page
+                       Home Page
                     </Typography>
                     <CardMedia className={classes.media} image={seashellImg}
                     title="Seemee Sample Image"/>
@@ -36,6 +37,7 @@ class Home extends Component {
                             Welcome to the SeeMee Skeleton Home Page
                         </Typography>
                     </CardContent>
+                    <Link to="/users">Test Link To Users</Link>
                 </Card>
             </div>
         )

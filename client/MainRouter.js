@@ -10,6 +10,7 @@ import Home from './core/Home'
          return (<div>
              <Switch>
                  <Route exact path="/" component={Home}/>
+                 <Route path="/users" component={Users}/>
              </Switch>
          </div>)
      }
