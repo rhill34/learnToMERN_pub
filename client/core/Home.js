@@ -35,6 +35,8 @@ class Home extends Component {
                     <CardContent>
                         <Typography type="body1" component="p">
                         Welcome to the SeeMee Skeleton Home Page <Link to="/users">Users</Link>
+                        <br/>
+                        <Link to="/signup">Seeker Signup</Link>
                         </Typography>
                     </CardContent>
                 </Card>
