@@ -1,9 +1,12 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
+import {PrivateRoute} from "./auth/PrivateRoute"
 import Home from './core/Home'
 import Users from './user/Users'
 import Signup from './user/Signup'
-import Signin from "./auth/Signin";
+import Signin from './auth/Signin'
+import Profile from './user/Profile'
+import EditProfile from './user/EditProfile'
 /**DEBUG: Issue including this import */
 // import Users from './user/Users'
 class DebugRouter extends Router {
@@ -46,6 +49,9 @@ class DebugRouter extends Router {
             <Route path="/users" name="Users" component={Users} />
             <Route path="/signup" component={Signup}/>
             <Route path="/signin" component={Signin}/>
+            {/* The PrivateRoute needs to be immediately before the Profile route to avoid confusion of the authorized user or reference user */}
+            <PrivateRoute path="/users/:userId" component={EditProfile}/>
+            <Route path="/users/:userId" component={Profile}/>
           </Switch>
         </DebugRouter>
       );
