@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
 import Home from './core/Home'
 import Users from './user/Users'
 import Signup from './user/Signup'
+import Signin from "./auth/Signin";
 /**DEBUG: Issue including this import */
 // import Users from './user/Users'
 class DebugRouter extends Router {
@@ -44,6 +45,7 @@ class DebugRouter extends Router {
             <Route exact path="/" name="Home" component={Home} />
             <Route path="/users" name="Users" component={Users} />
             <Route path="/signup" component={Signup}/>
+            <Route path="/signin" component={Signin}/>
           </Switch>
         </DebugRouter>
       );
