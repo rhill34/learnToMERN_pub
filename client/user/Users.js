@@ -10,6 +10,7 @@ import Paper from 'material-ui/Paper'
 import Person from 'material-ui-icons/Person'
 import {Link} from 'react-router-dom'
 import {list} from './api-user'
+// import Profile from './Profile'
 
 const styles = theme => ({
     root: theme.mixins.gutters({
@@ -60,9 +61,11 @@ class Users extends Component {
                           </ListItemAvatar>
                           <ListItemText primary={item.name}/>
                           <ListItemSecondaryAction>
-                          <IconButton>
-                              <ArrowForward/>
-                          </IconButton>
+                          <Link to={"/user/" + item._id}>
+                            <IconButton>
+                                <ArrowForward/>
+                            </IconButton>
+                          </Link>
                           </ListItemSecondaryAction>
                         </ListItem>
                      </Link>

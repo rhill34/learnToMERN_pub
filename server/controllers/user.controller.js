@@ -70,7 +70,7 @@ const update = (req, res, next) => {
         }
         user.hashed_password = undefined
         user.salt = undefined
-        res.join(user)
+        res.json(user)
     })
 }
 /*
@@ -78,7 +78,7 @@ Deleting
 */
 const remove = (req, res, next) => {
     let user = req.profile
-    user.deletOne((err, deletedUser) => {
+    user.remove((err, deletedUser) => {
         if(err) {
             return res.status(400).json({
                 error: errorHandler.getErrorMessage(err)
@@ -86,7 +86,7 @@ const remove = (req, res, next) => {
         }
         deletedUser.hashed_password = undefined
         deletedUser.salt = undefined
-        res.join(deletedUser)
+        res.json(deletedUser)
     })
 }
 
