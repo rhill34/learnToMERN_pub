@@ -39,6 +39,14 @@ app.use('/', userRoutes)
  */
 app.use('/', authRoutes)
 
+/**
+ * Receive any Get Request 
+ */
+app.get('*', (req, res) => {
+    //1.Prepare Material-UI styles
+    //2.Generate markup with renderToString
+    //3. Return template with markup and CSS styles in the response
+})
 app.get('/', (req,res) => {
     res.status(200).send(Template())
 })
