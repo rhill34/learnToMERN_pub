@@ -54,8 +54,46 @@ app.use('/', authRoutes)
  */
 app.get('*', (req, res) => {
     //1.Prepare Material-UI styles
+    const sheetsRegistry = new SheetRegistry()
+    const theme = createMuiTheme({
+        palette: {
+            primary: {
+                light: '#757de8',
+                main: '#3f51b5',
+                dark: '#002984',
+                contrastText: '#fff'
+            },
+            secondary: {
+                light: '#ff79b0',
+                main: '#ff4081',
+                dark: '#c60055',
+                contrastText: '#000'
+            },
+                openTitle: indigo['400'],
+                protectedTitle: pink['400'],
+                type: 'light'
+        },
+    })
     //2.Generate markup with renderToString
+    const context = {}
+    const markup = ReactDOMServer.renderToString(
+        <StaticRouter location={req.url} context={context}>
+            <JssProvider registry={sheetsRegistry} generateClassName={generateClassName}>
+                <MuiThemeProvider theme={theme} sheetsManager={new Map()}>
+                    <MainRouter/>
+                </MuiThemeProvider>
+            </JssProvider>
+        </StaticRouter>
+    )
     //3. Return template with markup and CSS styles in the response
+    if (context.url) {
+        return res.redirect(303, context.url)
+    }
+    const css = sheetsRegistry.toString()
+    res.status(200).send(Template({
+        markup: markup,
+        css: css
+    }))
 })
 app.get('/', (req,res) => {
     res.status(200).send(Template())
