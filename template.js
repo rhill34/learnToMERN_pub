@@ -9,7 +9,8 @@ export default () => {
             <title>SeeMee Skeleton Seekers</title>
         </head>
         <body>
-            <div id="root"></div>
+            <div id="root">${markup}</div>
+            <style id="jss-server-side">${css}</style>
             <script type="text/javascript" src="/dist/bundle.js">
             </script>
         </body>

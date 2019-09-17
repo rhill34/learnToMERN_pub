@@ -8,6 +8,7 @@ import Signin from './auth/Signin'
 import Profile from './user/Profile'
 import EditProfile from './user/EditProfile'
 import Menu from './core/Menu'
+
 /**DEBUG: Issue including this import */
 // import Users from './user/Users'
 class DebugRouter extends Router {
@@ -42,6 +43,11 @@ class DebugRouter extends Router {
 //  }
 
  class MainRouter extends Component {
+  componentDidMount() {
+    const jssStyles = document.getElementById('jss-server-side')
+    if (jssStyles && jssStyles.parentNode)
+      jssStyles.parentNode.removeChild(jssStyles)
+  }
     render() {
       return (
         <DebugRouter>
