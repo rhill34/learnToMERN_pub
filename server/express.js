@@ -9,7 +9,17 @@ import Template from './../template'
 import devBundle from './devBundle'
 /**Serving Static files with Express */
 import path from 'path'
-
+/**Render the React components from server */
+import React from 'react'
+import ReactDOMServer from 'react-dom/server'
+/**Router modules  */
+import StaticRouter from 'react-router-dom/StaticRouter'
+import MainRouter from './../client/MainRouter'
+/**Material-UI modules */
+import { SheetRegistry } from 'react-jss/lib/jss'
+import JssProvider from 'react-jss/lib/JssProvider'
+import { MuiThemeProvider, createMuiTheme, createGenerateClassName } from 'material-ui/styles'
+import { indigo, pink} from 'material-ui/colors'
 /**user API routes */
 import userRoutes from './routes/user.routes'
 /**authorized user Routes */
